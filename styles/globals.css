@@ -24,3 +24,102 @@ a {
     background: black;
   }
 }
+
+body {
+  height: 100%;
+  background-color: rgb(0, 148, 148);
+}
+
+.content {
+  left: 50%;
+  right: 50%;
+  text-align: center;
+  margin: 10px;
+  height: 100%;
+  background-color: rgb(0, 122, 122);;
+  padding: 15px;
+}
+
+.headline {
+  color: white;
+  font-size: 4vh;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: rgb(0, 148, 148);
+  height: fit-content;
+  width: 22%;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: left;
+  color: white;
+  justify-content: space-between;
+  height: auto;
+}
+@media screen and (max-width:987px) {
+  .card {
+    width: 48%;
+  }
+  
+}
+@media screen and (max-width:787px) {
+  .card {
+    width: 100%;
+  }
+}
+.left-box {
+  font-size: 30px;
+  display: inline;
+}
+
+.container {
+  background-color:rgb(0, 122, 122);  
+  padding: 60px;
+  margin: 0;
+  border-radius: 20px;
+  width: 920px;
+}
+
+.example-word {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.upper-box {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.right-box {
+  margin: 0px;
+  padding: 0px;
+  width: 50px;
+  height: 50px;
+}
+
+.volume {
+  size: 30px;
+}
+
+.btn{
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  transition: all 0.3s;
+}
+.btn:hover{
+  cursor: pointer;
+  color: black;
+  scale: 1.2;
+}

@@ -9,14 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/helper-module-imports": "^7.18.6",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
+    "babel-plugin-macros": "^3.1.0",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
+    "fs": "^0.0.1-security",
+    "gtts": "^0.2.1",
+    "net": "^1.0.2",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tls": "^0.0.1",
     "typescript": "4.8.4"
   }
 }
