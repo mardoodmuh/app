@@ -56,13 +56,16 @@ body {
 .card {
   background-color: rgb(0, 148, 148);
   height: fit-content;
-  width: 22%;
+  width: 19%;
   border-radius: 20px;
   padding: 20px;
   text-align: left;
   color: white;
   justify-content: space-between;
   height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 @media screen and (max-width:987px) {
   .card {
@@ -88,6 +91,12 @@ body {
   width: 920px;
 }
 
+.animation {
+  display: inline;
+  width: 20%;
+}
+
+
 .example-word {
   display: block;
   margin: 0;
@@ -99,8 +108,14 @@ body {
   flex-flow: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  width: 100%;
 }
-
+.card .gif{
+  width: 120px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 .right-box {
   margin: 0px;
   padding: 0px;

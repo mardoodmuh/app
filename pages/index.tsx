@@ -15,7 +15,7 @@ export default function Home() {
           <h1 className={styles.title}>Welcome to Maru-kun</h1>
 
           <p className={styles.description}>
-            Start your jurney to learn Japanese with us!
+            Start your journey to learn Japanese with us!
           </p>
 
           <div className={styles.grid}>

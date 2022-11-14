@@ -23,6 +23,7 @@ function App() {
     sound: string;
     vowel: string;
     katakana: string;
+    kana_type: string;
   }
   [];
 
@@ -48,40 +49,172 @@ function App() {
         {
           <div className="content">
             <h1 className="headline">Katakana</h1>
+            <h2 className="subtitle">Gojuuon</h2>
             <div className="row">
               {katakana.map((katakana: Katakana) => {
-                return (
-                  <>
-                    <div className="card">
-                      <div className="upper-box">
-                        <div className="left-box">
-                          {katakana.katakana} <span>{katakana.vowel}</span>
-                        </div>
-                        <div className="right-box">
-                          <i
+                if (katakana.kana_type == "gojuuon") {
+                  return (
+                    <>
+                      <div className="card">
+                        <div className="upper-box">
+                          <div className="left-box">
+                            {katakana.katakana} <span>{katakana.vowel}</span>
+                          </div>
+                          <button
+                            className="btn"
                             onClick={() => {
                               let audio = new Audio(katakana.sound);
                               audio.play();
                             }}
-                            className="fa fa-volume-up volume"
-                            style={{ fontSize: 24 }}
-                          />
+                          >
+                            <i
+                              className="fa fa-volume-up volume "
+                              style={{ fontSize: 24 }}
+                            />
+                          </button>
+                        </div>
+                        <div className="example">
+                          <div className="words">
+                            {katakana.ex.map((example: Ex) => {
+                              return (
+                                <>
+                                  <p className="example-word">
+                                    {example.word} {example.meaning}
+                                  </p>
+                                </>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
-                      <div className="example">
-                        {katakana.ex.map((example: Ex) => {
-                          return (
-                            <>
-                              <p className="example-word">
-                                {example.word} {example.meaning}
-                              </p>
-                            </>
-                          );
-                        })}
+                    </>
+                  );
+                }
+              })}
+            </div>
+            <br />
+            <h2 className="subtitle">Dakuon</h2>
+            <div className="row">
+              {katakana.map((katakana: Katakana) => {
+                if (katakana.kana_type == "dakuon") {
+                  return (
+                    <>
+                      <div className="card">
+                        <div className="upper-box">
+                          <div className="left-box">
+                            {katakana.katakana} <span>{katakana.vowel}</span>
+                          </div>
+                          <button
+                            className="btn"
+                            onClick={() => {
+                              let audio = new Audio(katakana.sound);
+                              audio.play();
+                            }}
+                          >
+                            <i
+                              className="fa fa-volume-up volume "
+                              style={{ fontSize: 24 }}
+                            />
+                          </button>
+                        </div>
+                        <div className="example">
+                          {katakana.ex.map((example: Ex) => {
+                            return (
+                              <>
+                                <p className="example-word">
+                                  {example.word} {example.meaning}
+                                </p>
+                              </>
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                  </>
-                );
+                    </>
+                  );
+                }
+              })}
+            </div>
+            <br />
+            <h2 className="subtitle">Handakuon</h2>
+            <div className="row">
+              {katakana.map((katakana: Katakana) => {
+                if (katakana.kana_type == "handakuon") {
+                  return (
+                    <>
+                      <div className="card">
+                        <div className="upper-box">
+                          <div className="left-box">
+                            {katakana.katakana} <span>{katakana.vowel}</span>
+                          </div>
+                          <button
+                            className="btn"
+                            onClick={() => {
+                              let audio = new Audio(katakana.sound);
+                              audio.play();
+                            }}
+                          >
+                            <i
+                              className="fa fa-volume-up volume "
+                              style={{ fontSize: 24 }}
+                            />
+                          </button>
+                        </div>
+                        <div className="example">
+                          {katakana.ex.map((example: Ex) => {
+                            return (
+                              <>
+                                <p className="example-word">
+                                  {example.word} {example.meaning}
+                                </p>
+                              </>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </>
+                  );
+                }
+              })}
+            </div>
+            <h2 className="subtitle">Youon</h2>
+            <div className="row">
+              {katakana.map((katakana: Katakana) => {
+                if (katakana.kana_type == "youon") {
+                  return (
+                    <>
+                      <div className="card">
+                        <div className="upper-box">
+                          <div className="left-box">
+                            {katakana.katakana} <span>{katakana.vowel}</span>
+                          </div>
+                          <button
+                            className="btn"
+                            onClick={() => {
+                              let audio = new Audio(katakana.sound);
+                              audio.play();
+                            }}
+                          >
+                            <i
+                              className="fa fa-volume-up volume "
+                              style={{ fontSize: 24 }}
+                            />
+                          </button>
+                        </div>
+                        <div className="example">
+                          {katakana.ex.map((example: Ex) => {
+                            return (
+                              <>
+                                <p className="example-word">
+                                  {example.word} {example.meaning}
+                                </p>
+                              </>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </>
+                  );
+                }
               })}
             </div>
           </div>
