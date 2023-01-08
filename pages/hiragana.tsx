@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Collapsible from "react-collapsible";
 
 function App() {
   const [kanatype, setKanaTypes] = useState([]);
+  const url: String = "https://api.mardood.tk";
+  const [isHovering, setIsHovered] = useState(false);
+  const onMouseEnter = () => setIsHovered(true);
+  const onMouseLeave = () => setIsHovered(false);
 
   useEffect(() => {
-    fetch("https://api.mardood.tk/api/kanatypes/")
+    fetch(url + "/api/kanatypes/")
       .then((response) => response.json())
       .then((res) => setKanaTypes(res))
       .catch((err) => console.log(err));
@@ -20,6 +25,7 @@ function App() {
         id: number;
         word: string;
         meaning: string;
+        romaji: string;
       }[];
       sound: string;
       vowel: string;
@@ -47,57 +53,73 @@ function App() {
             {kanatype.map((kanatype: KanaTypes) => {
               return (
                 <>
-                  <h2 className="subtitle" key={kanatype.id}>
-                    {kanatype.kana_type}
-                  </h2>
-
-                  <div className="row">
-                    {kanatype.hiragana.map((hiragana: any) => {
-                      return (
-                        <>
-                          <div className="card">
-                            <div className="upper-box">
-                              <div className="left-box">
-                                {hiragana.hiragana}{" "}
-                                <span>{hiragana.vowel}</span>
+                  <Collapsible
+                    className="subtitle"
+                    trigger={kanatype.kana_type}
+                    open={kanatype.kana_type == "Gojuuon" ? true : false}
+                  >
+                    <div className="row">
+                      {kanatype.hiragana.map((hiragana: any) => {
+                        return (
+                          <>
+                            <div className="card">
+                              <div className="upper-box">
+                                <div className="left-box">
+                                  {hiragana.hiragana}{" "}
+                                  <span>{hiragana.vowel}</span>
+                                </div>
+                                <button
+                                  className="btn"
+                                  onClick={() => {
+                                    let audio = new Audio(url + hiragana.sound);
+                                    audio.play();
+                                  }}
+                                >
+                                  <i
+                                    className="fa fa-volume-up volume"
+                                    style={{ fontSize: 24 }}
+                                  />
+                                </button>
                               </div>
-                              <button
-                                className="btn"
-                                onClick={() => {
-                                  let audio = new Audio(hiragana.sound);
-                                  audio.play();
-                                }}
-                              >
-                                <i
-                                  className="fa fa-volume-up volume "
-                                  style={{ fontSize: 24 }}
-                                />
-                              </button>
+                              <div className="d-flex">
+                                {hiragana.ex.map((example: any) => {
+                                  return (
+                                    <>
+                                      <p className="example-word">
+                                        <p
+                                          className="word"
+                                          title={example.romaji}
+                                        >
+                                          {example.word}
+                                        </p>{" "}
+                                        {example.meaning_capitalized}
+                                      </p>
+                                    </>
+                                  );
+                                })}
+                              </div>{" "}
+                              <img
+                                onMouseEnter={(e) =>
+                                  (e.currentTarget.src = `${url}/media/hiragana/gif/150x150/${hiragana.hiragana}.gif`)
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.currentTarget.src = `${url}/media/hiragana/static/150x150/${hiragana.hiragana}.png`)
+                                }
+                                className={
+                                  kanatype.kana_type == "Youon"
+                                    ? "hidden"
+                                    : "gif"
+                                }
+                                src={`${url}/media/hiragana/static/150x150/${hiragana.hiragana}.png`}
+                                alt={hiragana.vowel}
+                                width={90}
+                              />
                             </div>
-                            <div className="d-flex">
-                              {hiragana.ex.map((example: any) => {
-                                return (
-                                  <>
-                                    <p className="example-word">
-                                      {example.word} {example.meaning}
-                                    </p>
-                                  </>
-                                );
-                              })}
-                            </div>
-                            {/*{" "}
-                            <img
-                              className="gif"
-                              src={`https://api.mardood.tk/media/hiragana/Hiragana_${hiragana.hiragana}_stroke_order_animation.gif`}
-                              alt={hiragana.vowel}
-                              width={90}
-                            />
-                            */}
-                          </div>
-                        </>
-                      );
-                    })}
-                  </div>
+                          </>
+                        );
+                      })}
+                    </div>
+                  </Collapsible>
                 </>
               );
             })}

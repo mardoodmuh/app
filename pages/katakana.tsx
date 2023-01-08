@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Collapsible from "react-collapsible";
 
 function App() {
   const [kanatype, setKanaTypes] = useState([]);
+  const url: String = "https://api.mardood.tk";
 
   useEffect(() => {
-    fetch("https://api.mardood.tk/api/kanatypes/")
+    fetch(url + "/api/kanatypes/")
       .then((response) => response.json())
       .then((res) => setKanaTypes(res))
       .catch((err) => console.log(err));
   }, []);
 
+  const changeurl = (e: HTMLImageElement, letter: String) => {
+    e.src == `${url}/media/katakana/gif/150x150/${letter}.gif`;
+  };
   interface KanaTypes {
     id: number;
     kana_type: string;
@@ -47,60 +52,73 @@ function App() {
             {kanatype.map((kanatype: KanaTypes) => {
               return (
                 <>
-                  <h2 className="subtitle" key={kanatype.id}>
-                    {kanatype.kana_type}
-                  </h2>
-
-                  <div className="row">
-                    {kanatype.katakana.map((katakana: any) => {
-                      return (
-                        <>
-                          <div className="card" key={katakana.id}>
-                            <div className="upper-box">
-                              <div className="left-box">
-                                {katakana.katakana}{" "}
-                                <span>{katakana.vowel}</span>
+                  <Collapsible
+                    className="subtitle"
+                    trigger={kanatype.kana_type}
+                    open={kanatype.kana_type == "Gojuuon" ? true : false}
+                  >
+                    <div className="row">
+                      {kanatype.katakana.map((katakana: any) => {
+                        return (
+                          <>
+                            <div className="card" key={katakana.id}>
+                              <div className="upper-box">
+                                <div className="left-box">
+                                  {katakana.katakana}{" "}
+                                  <span>{katakana.vowel}</span>
+                                </div>
+                                <button
+                                  className="btn"
+                                  onClick={() => {
+                                    let audio = new Audio(katakana.sound);
+                                    audio.play();
+                                  }}
+                                >
+                                  <i
+                                    className="fa fa-volume-up volume "
+                                    style={{ fontSize: 24 }}
+                                  />
+                                </button>
                               </div>
-                              <button
-                                className="btn"
-                                onClick={() => {
-                                  let audio = new Audio(katakana.sound);
-                                  audio.play();
-                                }}
-                              >
-                                <i
-                                  className="fa fa-volume-up volume "
-                                  style={{ fontSize: 24 }}
-                                />
-                              </button>
+                              <div className="d-flex">
+                                {katakana.ex.map((example: any) => {
+                                  return (
+                                    <>
+                                      <p className="example-word">
+                                        <p
+                                          className="word"
+                                          title={example.romaji}
+                                        >
+                                          {example.word}
+                                        </p>{" "}
+                                        {example.meaning_capitalized}
+                                      </p>
+                                    </>
+                                  );
+                                })}
+                              </div>{" "}
+                              <img
+                                onMouseOver={(e) =>
+                                  (e.currentTarget.src = `${url}/media/katakana/gif/150x150/${katakana.katakana}.gif`)
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.currentTarget.src = `${url}/media/katakana/static/150x150/${katakana.katakana}.png`)
+                                }
+                                className={
+                                  kanatype.kana_type == "Youon"
+                                    ? "hidden"
+                                    : "gif"
+                                }
+                                src={`${url}/media/katakana/static/150x150/${katakana.katakana}.png`}
+                                alt={katakana.vowel}
+                                width={90}
+                              />
                             </div>
-                            <div className="d-flex">
-                              {katakana.ex.map((example: any) => {
-                                return (
-                                  <>
-                                    <p
-                                      className="example-word"
-                                      key={example.id}
-                                    >
-                                      {example.word} {example.meaning}
-                                    </p>
-                                  </>
-                                );
-                              })}
-                            </div>
-                            {/*{" "}
-                            <img
-                              className="gif"
-                              src={`https://api.mardood.tk/media/katakana/katakana_${katakana.katakana}_stroke_order_animation.gif`}
-                              alt={katakana.vowel}
-                              width={90}
-                            />
-                            */}
-                          </div>
-                        </>
-                      );
-                    })}
-                  </div>
+                          </>
+                        );
+                      })}
+                    </div>
+                  </Collapsible>
                 </>
               );
             })}

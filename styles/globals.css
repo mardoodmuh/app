@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.hidden {
+  display: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -36,27 +40,23 @@ body {
   text-align: center;
   margin: 10px;
   height: 100%;
-  background-color: rgb(0, 122, 122);;
+  background-color: rgb(0, 122, 122);
   padding: 15px;
 }
 
-.headline {
-  color: white;
-  font-size: 4vh;
-}
-
-.row{
+.row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 17px;
   justify-content: center;
 }
 
 .card {
-  background-color: rgb(0, 148, 148);
+  background-color: rgb(0, 132, 132);
   height: fit-content;
   width: 19%;
+  min-width: 18rem;
   border-radius: 20px;
   padding: 20px;
   text-align: left;
@@ -67,13 +67,17 @@ body {
   flex-wrap: wrap;
   align-items: center;
 }
-@media screen and (max-width:987px) {
+@media screen and (max-width: 1363px) {
+  .card {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1018px) {
   .card {
     width: 48%;
   }
-  
 }
-@media screen and (max-width:787px) {
+@media screen and (max-width: 787px) {
   .card {
     width: 100%;
   }
@@ -84,7 +88,7 @@ body {
 }
 
 .container {
-  background-color:rgb(0, 122, 122);  
+  background-color: rgb(0, 122, 122);
   padding: 60px;
   margin: 0;
   border-radius: 20px;
@@ -95,7 +99,6 @@ body {
   display: inline;
   width: 20%;
 }
-
 
 .example-word {
   display: block;
@@ -110,11 +113,10 @@ body {
   justify-content: space-between;
   width: 100%;
 }
-.card .gif{
-  width: 120px;
-  height: 100px;
+.card .gif {
   object-fit: cover;
   border-radius: 10px;
+  size: 20%;
 }
 .right-box {
   margin: 0px;
@@ -127,14 +129,50 @@ body {
   size: 30px;
 }
 
-.btn{
+.btn {
   background: transparent;
   border-radius: 0;
   border: none;
   transition: all 0.3s;
 }
-.btn:hover{
+.btn:hover {
   cursor: pointer;
   color: black;
   scale: 1.2;
+}
+
+.word {
+  display: contents;
+}
+
+.Collapsible__trigger {
+  padding: 10px;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 490;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.Collapsible__trigger:after {
+  font-family: "FontAwesome";
+  content: "\f107";
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 400ms;
+}
+
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(180deg);
+}
+
+.Collapsible {
+  text-align: start;
+  background-color: rgb(0, 148, 148);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
 }
