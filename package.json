@@ -15,8 +15,8 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
+    "axios": "^1.2.2",
     "babel-plugin-macros": "^3.1.0",
-    "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
     "fs": "^0.0.1-security",
     "gtts": "^0.1.1",
@@ -25,7 +25,15 @@
     "react": "18.2.0",
     "react-collapsible": "^2.10.0",
     "react-dom": "18.2.0",
-    "tls": "^0.0.1",
-    "typescript": "4.8.4"
+    "tls": "^0.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-config-standard-with-typescript": "^27.0.1",
+    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^4.9.4"
   }
 }
