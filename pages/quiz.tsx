@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 
 function App() {
-  const url = "https://api.mardood.tk";
+  const url = "http://172.2.26.21:8040/";
   const [questions, setQuestions] = useState([]);
   const [answer, setAnswer] = useState("");
   const [score, setScore] = useState(0);
@@ -14,6 +14,7 @@ function App() {
     meaning: "Loading...",
     romaji: "Loading...",
   });
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
   useEffect(() => {
     fetch(url + "/api/examples/")
@@ -47,6 +48,7 @@ function App() {
       setScore(score + 1);
       setCorrect(true);
       setCurrentQuestion(availableQuestion[randomIndex]);
+      setAnsweredQuestions([...answeredQuestions, currentQuestion as list])
       setUsedQuestions([...usedQuestions, currentQuestion]);
       setAnswer("");
     } else {
@@ -57,7 +59,7 @@ function App() {
   return (
     <div className="App">
       <Head>
-        <title>Quiz App</title>
+        <title>Word Quiz</title>
         <meta
           name="description"
           content="A quiz app to test your knowledge in Hiragana and Katakana"
@@ -65,20 +67,23 @@ function App() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="content">
-        <h1 className="headline">Quiz App</h1>
+        <h1 className="headline">Word Quiz</h1>
         <div className="container">
           {currentQuestion ? (
             <>
-              <p>{currentQuestion.word}</p>
+              <p className="quiz-word">{currentQuestion.word}</p>
               <input
-                className="input"
+                className="quiz-input"
                 type="text"
                 onChange={handleChange}
+                placeholder="Enter the romaji of the word above"
                 onKeyDown={handleChange}
                 value={answer}
               />
-              <p>{score}</p>
-              <p>Correct: {correct.toString()}</p>
+              <p className="score-number">{score}</p>
+              {answeredQuestions.map((questions)=>{
+                return(<p>{questions.word}, {questions.romaji}</p>)
+             })}
             </>
           ) : (
             <p>Loading...</p>

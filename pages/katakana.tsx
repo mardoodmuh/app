@@ -4,7 +4,7 @@ import Collapsible from "react-collapsible";
 
 function App() {
   const [kanatype, setKanaTypes] = useState([]);
-  const url: String = "https://api.mardood.tk";
+  const url: String = "http://172.2.26.21:8040/";
 
   useEffect(() => {
     fetch(url + "/api/kanatypes/")

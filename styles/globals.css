@@ -55,9 +55,9 @@ a {
   flex-wrap: wrap;
   align-items: center;
 }
-@media screen and (max-width: 1363px) {
+@media screen and (max-width: 1370px) {
   .card {
-    width: 30%;
+    width: 32%;
   }
 }
 @media screen and (max-width: 1018px) {
@@ -162,10 +162,29 @@ a {
   text-align: center;
 }
 
-.input {
+.quiz-input {
   background-color: white;
   border: none;
   color: black;
   padding: 5px;
-  margin: 3px;
+  border-radius: 0 0 5px 5px;
+  display: inline;
+  width: 97.2%;
+  margin: 20px;
+  margin-bottom: 0;
+  text-align: center;
+  margin-top: 0;
+  font-size: 20px;
+}
+.quiz-word{
+  background-color: white;
+  border: none;
+  color: black;
+  border-radius: 5px 5px 0 0 ;
+  padding: 5px;
+  text-align: center;
+  display: block;
+  font-size: 30px;
+  margin: 20px;
+  margin-bottom: 0;
 }
