@@ -163,19 +163,15 @@ a {
 }
 
 .quiz-input {
-  background-color: white;
-  border: none;
-  color: black;
-  padding: 5px;
-  border-radius: 0 0 5px 5px;
-  display: inline;
-  width: 97.2%;
-  margin: 20px;
-  margin-bottom: 0;
+  width: 100%;
+  /*max-width: 300px;*/
   text-align: center;
-  margin-top: 0;
-  font-size: 20px;
+  height: 50px;
+  margin-inline: 20px;
+  border: none;
+  border-radius: 0px 0px 5px 5px;
 }
+
 .quiz-word{
   background-color: white;
   border: none;

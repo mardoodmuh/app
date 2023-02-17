@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 
 function App() {
-  const url = "http://172.2.26.21:8040/";
+  const url = "http://127.0.0.1:8000/";
   const [questions, setQuestions] = useState([]);
   const [answer, setAnswer] = useState("");
   const [score, setScore] = useState(0);
