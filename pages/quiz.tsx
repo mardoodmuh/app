@@ -7,7 +7,6 @@ function App() {
   const [answer, setAnswer] = useState("");
   const [score, setScore] = useState(0);
   const [usedQuestions, setUsedQuestions] = useState([{ id: 0 }]);
-  const [correct, setCorrect] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState({
     id: 0,
     word: "Loading...",
@@ -46,13 +45,10 @@ function App() {
     const randomIndex = Math.floor(Math.random() * availableQuestion.length);
     if (answer.toLowerCase().trim() === correctAnswer) {
       setScore(score + 1);
-      setCorrect(true);
       setCurrentQuestion(availableQuestion[randomIndex]);
       setAnsweredQuestions([...answeredQuestions, currentQuestion as list]);
       setUsedQuestions([...usedQuestions, currentQuestion]);
       setAnswer("");
-    } else {
-      setCorrect(false);
     }
   };
 
@@ -82,13 +78,23 @@ function App() {
                   value={answer}
                 />
                 <p className="score-number">{score}</p>
+                {answeredQuestions.length > 0 ? (
+                <div className="table-container">
+                  <table  className="answers-table">
+                        <tr>
+                          <th>Word</th>
+                          <th>Romaji</th>
+                        </tr>
                 {answeredQuestions.map((questions) => {
                   return (
-                    <p>
-                      {questions.word}, {questions.romaji}
-                    </p>
+                        <tr>
+                          <td>{questions.word}</td>
+                          <td>{questions.romaji}</td>
+                        </tr>
                   );
                 })}
+                </table>
+                </div>):(<></>)}
               </div>
             </>
           ) : (
