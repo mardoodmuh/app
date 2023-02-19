@@ -155,32 +155,37 @@ a {
   background-color: rgb(0, 148, 148);
   border-radius: 10px;
   padding: 10px;
-  margin: 10px;
 }
 
 .container {
+  width: 100%;
+  position: relative;
   text-align: center;
 }
 
 .quiz-input {
   width: 100%;
-  /*max-width: 300px;*/
   text-align: center;
+  font-size: 22px;
+  color: black;
   height: 50px;
-  margin-inline: 20px;
   border: none;
   border-radius: 0px 0px 5px 5px;
 }
 
-.quiz-word{
+.quiz-word {
   background-color: white;
+  width: 100%;
   border: none;
   color: black;
-  border-radius: 5px 5px 0 0 ;
+  border-radius: 5px 5px 0 0;
   padding: 5px;
   text-align: center;
   display: block;
   font-size: 30px;
-  margin: 20px;
   margin-bottom: 0;
+}
+
+.quiz-box {
+  margin: 20px;
 }

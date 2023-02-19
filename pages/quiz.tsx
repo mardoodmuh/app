@@ -48,7 +48,7 @@ function App() {
       setScore(score + 1);
       setCorrect(true);
       setCurrentQuestion(availableQuestion[randomIndex]);
-      setAnsweredQuestions([...answeredQuestions, currentQuestion as list])
+      setAnsweredQuestions([...answeredQuestions, currentQuestion as list]);
       setUsedQuestions([...usedQuestions, currentQuestion]);
       setAnswer("");
     } else {
@@ -71,19 +71,25 @@ function App() {
         <div className="container">
           {currentQuestion ? (
             <>
-              <p className="quiz-word">{currentQuestion.word}</p>
-              <input
-                className="quiz-input"
-                type="text"
-                onChange={handleChange}
-                placeholder="Enter the romaji of the word above"
-                onKeyDown={handleChange}
-                value={answer}
-              />
-              <p className="score-number">{score}</p>
-              {answeredQuestions.map((questions)=>{
-                return(<p>{questions.word}, {questions.romaji}</p>)
-             })}
+              <div className="quiz-box">
+                <p className="quiz-word">{currentQuestion.word}</p>
+                <input
+                  className="quiz-input"
+                  type="text"
+                  onChange={handleChange}
+                  placeholder="Enter the romaji of the word above"
+                  onKeyDown={handleChange}
+                  value={answer}
+                />
+                <p className="score-number">{score}</p>
+                {answeredQuestions.map((questions) => {
+                  return (
+                    <p>
+                      {questions.word}, {questions.romaji}
+                    </p>
+                  );
+                })}
+              </div>
             </>
           ) : (
             <p>Loading...</p>
