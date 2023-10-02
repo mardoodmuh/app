@@ -1,5 +1,10 @@
 .container {
-  padding: 0 2rem;
+  size: 80%;
+  background-color: rgb(0, 148, 148);
+  margin: 15px;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .main {
@@ -67,10 +72,10 @@
 
 .grid {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .card {
@@ -82,7 +87,7 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 460px;
+  width: 70%;
 }
 
 .card:hover,

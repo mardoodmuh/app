@@ -3,14 +3,14 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Maru-kun</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className="container">
+        <div className={styles.container}>
           <h1 className={styles.title}>Welcome to Maru-kun</h1>
 
           <p className={styles.description}>
@@ -29,6 +29,11 @@ export default function Home() {
             <a href="/katakana" className={styles.card}>
               <h2>Katakana カタカナ　&rarr;</h2>
               <p>Learn how to read the Japanese words in Katakana!</p>
+            </a>
+
+            <a href="/quiz" className={styles.card}>
+              <h2>Quiz クイズ　&rarr;</h2>
+              <p>Test Your Knowledge</p>
             </a>
           </div>
         </div>
